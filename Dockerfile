@@ -3,13 +3,11 @@
 # - logstash (1.4)
 # - elasticsearch (1.0)
 # - kibana (3.0)
-#FROM qnib/fd20
-FROM fedora
+FROM qnib/docker-fd20
 MAINTAINER "Christian Kniep <christian@qnib.org>"
 
 
-RUN yum update -y -x systemd -x systemd-libs
-RUN yum install -y wget openssh-server 
+RUN yum install -y openssh-server 
 RUN sshd-keygen
 
 # Install dependencies
