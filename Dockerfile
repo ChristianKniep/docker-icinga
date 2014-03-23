@@ -11,7 +11,7 @@ RUN yum install -y openssh-server
 RUN sshd-keygen
 
 # Install dependencies
-RUN yum install -y httpd gcc glibc glibc-common gd gd-devel libjpeg libjpeg-devel libpng libpng-devel net-snmp net-snmp-devel net-snmp-utils
+RUN yum install -y gcc glibc glibc-common gd gd-devel libjpeg libjpeg-devel libpng libpng-devel net-snmp net-snmp-devel net-snmp-utils
 
 RUN /usr/sbin/useradd -m icinga 
 RUN echo "icinga:icinga" |chpasswd
@@ -19,6 +19,9 @@ RUN echo "icinga:icinga" |chpasswd
 RUN /usr/sbin/groupadd icinga-cmd
 RUN /usr/sbin/usermod -a -G icinga-cmd icinga
 RUN /usr/sbin/usermod -a -G icinga-cmd apache
+
+# Install httpd
+RUN yum install -y httpd
 
 # compile icinga
 WORKDIR /usr/src
