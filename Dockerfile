@@ -18,10 +18,10 @@ RUN echo "icinga:icinga" |chpasswd
 #RUN /usr/sbin/groupadd icinga
 RUN /usr/sbin/groupadd icinga-cmd
 RUN /usr/sbin/usermod -a -G icinga-cmd icinga
-RUN /usr/sbin/usermod -a -G icinga-cmd apache
 
 # Install httpd
 RUN yum install -y httpd
+RUN /usr/sbin/usermod -a -G icinga-cmd apache
 
 # compile icinga
 WORKDIR /usr/src
